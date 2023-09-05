@@ -26,6 +26,35 @@ class _Material_ScreenState extends State<Material_Screen> {
               })
         ],
       ),
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          CircularProgressIndicator(),
+          SizedBox(
+            height: 35,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  isDismissible: false,
+                  barrierColor: Colors.purple.withOpacity(0.20),
+                  context: context,
+                  builder: (context) => Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.purpleAccent.withOpacity(0.30),
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Back"),
+                    ),
+                  ),
+                );
+              },
+              child: Text("Elevated Button"))
+        ]),
+      ),
     );
   }
 }

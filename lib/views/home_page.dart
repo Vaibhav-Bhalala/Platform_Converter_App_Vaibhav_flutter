@@ -68,10 +68,32 @@ class _HomePageState extends State<HomePage> {
               ),
               CupertinoButton(
                   child: Text(
-                    "Click Here",
+                    "Cupertino Button",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) {
+                        return CupertinoActionSheet(
+                          title: Text("Are you sure?"),
+                          message: Text("If you Sure press Exit or Press Back"),
+                          actions: [
+                            CupertinoActionSheetAction(
+                                isDestructiveAction: true,
+                                onPressed: () {},
+                                child: Text("Exit")),
+                            CupertinoActionSheetAction(
+                                isDefaultAction: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Back")),
+                          ],
+                        );
+                      },
+                    );
+                  }),
             ]),
           ),
         ));
